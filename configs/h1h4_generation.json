@@ -1,0 +1,96 @@
+{
+  "run_id": "dynamic_difficulty_h1h4_generation",
+  "output_dir": "runs/dynamic_difficulty_h1h4_generation",
+  "harmful_seed_library": {
+    "path": "seed_data/harmful_zh_17class_v1",
+    "sources": [],
+    "deduplicate": true
+  },
+  "skill": {
+    "path": "skills",
+    "fail_on_quality_error": true
+  },
+  "generation": {
+    "total_sample_count": 1000,
+    "resume": true,
+    "language": "zh",
+    "random_seed": 2026060215,
+    "match_offset_base": 3921000,
+    "sample_mode": "paired_mixed",
+    "metric_targets": ["edit_success", "harmless_retention"],
+    "data_origin_modes": ["splice_constructed"],
+    "difficulty_sequence": ["H1", "H2", "H3", "H4"],
+    "difficulty_counts": {
+      "H1": 250,
+      "H2": 250,
+      "H3": 250,
+      "H4": 250
+    }
+  },
+  "harmless_companion_generator": {
+    "api_base": "http://127.0.0.1:8000/v1",
+    "api_key_env": "",
+    "model": "Qwen3.5-9B",
+    "temperature": 0.2,
+    "top_p": 0.9,
+    "max_tokens": 768,
+    "timeout": 180,
+    "retries": 2,
+    "max_attempts": 4,
+    "harmful_candidate_window": 10,
+    "min_chars": 24,
+    "max_chars": 260,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "guard": {
+      "enabled": true,
+      "api_base": "http://127.0.0.1:8000/v1",
+      "api_key_env": "",
+      "model": "Qwen3Guard-Gen-4B",
+      "timeout": 120,
+      "retries": 2,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "final_guard": {
+    "api_base": "http://127.0.0.1:8000/v1",
+    "api_key_env": "",
+    "model": "Qwen3Guard-Gen-4B",
+    "max_tokens": 64,
+    "timeout": 120,
+    "retries": 2,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "llm_composer": {
+    "enabled": true,
+    "api_base": "http://127.0.0.1:8000/v1",
+    "api_key_env": "",
+    "model": "Qwen3.5-9B",
+    "temperature": 0.2,
+    "top_p": 0.9,
+    "max_tokens": 768,
+    "timeout": 180,
+    "retries": 2,
+    "concurrency": 48,
+    "discard_retry_limit": 24,
+    "bridge_review": {
+      "enabled": true,
+      "temperature": 0,
+      "max_tokens": 256
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "llm": {
+    "enabled": false
+  },
+  "seed_generation": {
+    "enabled": false
+  }
+}

@@ -1,0 +1,12 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.uv-cache/
+.env
+.env.local
+
+# Generated runs are local artifacts.
+runs/*
+!runs/.gitkeep

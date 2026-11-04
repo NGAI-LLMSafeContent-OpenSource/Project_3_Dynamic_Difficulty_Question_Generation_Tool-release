@@ -1,0 +1,25 @@
+{
+  "run_id": "release_example",
+  "seed_input_path": "examples/seed.example.json",
+  "output_dir": "runs/release_example",
+  "generation": {
+    "total_sample_count": 1,
+    "difficulty_counts": {
+      "H1": 1
+    },
+    "resume": true
+  },
+  "llm_composer": {
+    "api_base": "http://127.0.0.1:8000/v1",
+    "api_key_env": "QUESTION_MODEL_API_KEY",
+    "model": "replace-with-your-model"
+  },
+  "harmless_companion_generator": {
+    "api_base": "http://127.0.0.1:8000/v1",
+    "api_key_env": "QUESTION_MODEL_API_KEY",
+    "model": "replace-with-your-model"
+  },
+  "skill": {
+    "path": "skills"
+  }
+}

@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>动态难度出题 Agent</title>
+    <link rel="stylesheet" href="./styles.css?v=example-gallery-20260818">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>动态难度出题 Agent</h1>
+        <p id="agentStatus">检测后端服务中</p>
+      </div>
+      <div class="topbar-actions">
+        <button class="primary" id="startJobButton" type="button">启动生成</button>
+        <button class="secondary" id="stopJobButton" type="button" disabled>停止</button>
+        <button class="secondary" id="resumeJobButton" type="button" disabled>恢复</button>
+        <button class="secondary" id="showBaseConfigButton" type="button">基础配置</button>
+        <button class="secondary" id="exportConfigButton" type="button">导出配置</button>
+        <button class="secondary" id="copyApiButton" type="button">复制 API</button>
+        <button class="secondary" id="downloadSamplesButton" type="button" disabled>下载 JSONL</button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="config-panel" aria-label="生成配置">
+        <div class="section-title">
+          <h2>生成配置</h2>
+          <div class="section-actions">
+            <span id="configSummary"></span>
+            <button class="secondary small" id="showConfigButton" type="button">查看配置</button>
+          </div>
+        </div>
+
+        <div class="mode-tabs" role="tablist" aria-label="生成模式">
+          <button class="mode-tab active" id="singleModeButton" type="button" data-mode="single">单条数据</button>
+          <button class="mode-tab" id="batchModeButton" type="button" data-mode="batch">批量生成</button>
+        </div>
+
+        <div class="form-row three">
+          <label class="field">
+            <span>任务 ID</span>
+            <input id="runId" type="text" value="dynamic_difficulty_ui_single">
+          </label>
+          <label class="field">
+            <span>Skill</span>
+            <select id="skillVersion">
+              <option value="skills" selected>动态难度出题 skill</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>数据来源</span>
+            <select id="dataSourceMode">
+              <option value="harmful_seed_library" selected>有害样本 seed 数据</option>
+              <option value="seed_input_json">旧 seed_input JSON</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>输出目录</span>
+            <input id="outputDir" type="text" value="runs/dynamic_difficulty_ui_single">
+          </label>
+        </div>
+
+        <div class="form-row two">
+          <label class="field">
+            <span>数据路径</span>
+            <input id="seedInputPath" type="text" value="seed_data/harmful_zh_17class_v1">
+          </label>
+          <label class="field">
+            <span>Source 过滤</span>
+            <input id="seedSources" type="text" placeholder="留空读取全部；可填 source_name，用英文逗号分隔">
+          </label>
+        </div>
+
+        <div class="form-row four">
+          <label class="field">
+            <span>数据语言</span>
+            <select id="language">
+              <option value="zh" selected>中文 zh</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>随机种子</span>
+            <input id="randomSeed" type="text" inputmode="numeric" placeholder="留空自动生成">
+          </label>
+          <label class="field">
+            <span>并发</span>
+            <input id="composerConcurrency" type="number" min="1" value="8">
+          </label>
+        </div>
+
+        <section class="mode-section active" id="singleSettings">
+          <div class="section-title compact">
+            <h2>单条详细设置</h2>
+            <span>1 条样本</span>
+          </div>
+          <div class="form-row two">
+            <label class="field">
+              <span>Topic / Subtopic</span>
+              <select id="singleDomain"></select>
+            </label>
+            <label class="field">
+              <span>等级</span>
+              <select id="singleLevel">
+                <option value="H1">H1 · 1H + 1S</option>
+                <option value="H2">H2 · 2H + 1S</option>
+                <option value="H3">H3 · 1H + 2S</option>
+                <option value="H4">H4 · 2H + 2S</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="mode-section" id="batchSettings">
+          <div class="section-title compact">
+            <h2>批量详细设置</h2>
+            <span id="batchTotalSummary"></span>
+          </div>
+          <div class="level-grid">
+            <label class="field">
+              <span>H1 数量</span>
+              <input id="countH1" type="number" min="0" value="100">
+            </label>
+            <label class="field">
+              <span>H2 数量</span>
+              <input id="countH2" type="number" min="0" value="100">
+            </label>
+            <label class="field">
+              <span>H3 数量</span>
+              <input id="countH3" type="number" min="0" value="100">
+            </label>
+            <label class="field">
+              <span>H4 数量</span>
+              <input id="countH4" type="number" min="0" value="100">
+            </label>
+          </div>
+
+          <div class="topic-toolbar">
+            <strong>Topic</strong>
+            <div>
+              <button class="secondary small" id="selectAllTopicsButton" type="button">全选</button>
+              <button class="secondary small" id="clearTopicsButton" type="button">清空</button>
+            </div>
+          </div>
+          <div class="topic-list" id="topicList"></div>
+        </section>
+
+      </section>
+
+      <section class="monitor-panel">
+        <div class="section-title">
+          <h2>生成进度</h2>
+          <span id="jobBadge">未启动</span>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-bar"><span id="progressFill"></span></div>
+          <strong id="progressText">0 / 0</strong>
+        </div>
+        <div id="jobStats" class="manifest-box"></div>
+        <div class="level-progress" id="levelProgress"></div>
+        <div id="agentTrace" class="agent-trace"></div>
+        <pre class="log-box" id="logBox">等待任务日志</pre>
+      </section>
+
+      <section class="result-panel">
+        <div class="section-title">
+          <h2>样本预览</h2>
+          <span id="resultSummary">尚未生成</span>
+        </div>
+        <div id="samplePreview" class="sample-preview"></div>
+      </section>
+
+      <section class="example-panel" aria-labelledby="exampleGalleryTitle">
+        <div class="section-title">
+          <h2 id="exampleGalleryTitle">H1–H4 结构样例</h2>
+          <span id="exampleSummary">读取中</span>
+        </div>
+        <div class="example-toolbar">
+          <div class="example-tabs" role="tablist" aria-label="按难度等级筛选样例">
+            <button class="example-tab active" type="button" data-level="ALL" role="tab" aria-selected="true">全部</button>
+            <button class="example-tab" type="button" data-level="H1" role="tab" aria-selected="false">H1 · 1H+1S</button>
+            <button class="example-tab" type="button" data-level="H2" role="tab" aria-selected="false">H2 · 2H+1S</button>
+            <button class="example-tab" type="button" data-level="H3" role="tab" aria-selected="false">H3 · 1H+2S</button>
+            <button class="example-tab" type="button" data-level="H4" role="tab" aria-selected="false">H4 · 2H+2S</button>
+          </div>
+          <div class="source-legend example-legend" aria-label="片段颜色说明">
+            <span class="legend-chip harmful">风险片段</span>
+            <span class="legend-chip harmless">非风险片段</span>
+          </div>
+        </div>
+        <div id="exampleGallery" class="example-gallery" role="tabpanel" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <template id="emptyTemplate">
+      <div class="empty-state">
+        <h3>等待生成</h3>
+        <p>任务启动后，这里展示最近生成的样本摘要。</p>
+      </div>
+    </template>
+
+    <dialog id="configDialog" class="config-dialog">
+      <div class="dialog-head">
+        <h2>当前配置</h2>
+        <button class="secondary small" id="closeConfigButton" type="button">关闭</button>
+      </div>
+      <pre id="configPreview"></pre>
+    </dialog>
+
+    <dialog id="apiCommandDialog" class="config-dialog api-command-dialog">
+      <div class="dialog-head">
+        <h2>API 调用命令</h2>
+        <button class="secondary small" id="closeApiCommandButton" type="button">关闭</button>
+      </div>
+      <p class="dialog-note">当前页面无法访问系统剪贴板，请手动复制以下命令。</p>
+      <textarea
+        class="api-command-output"
+        id="apiCommandOutput"
+        aria-label="API 调用命令"
+        readonly
+        spellcheck="false"
+      ></textarea>
+    </dialog>
+
+    <dialog id="baseConfigDialog" class="config-dialog base-config-dialog">
+      <div class="dialog-head">
+        <h2>基础配置</h2>
+        <button class="secondary small" id="closeBaseConfigButton" type="button">关闭</button>
+      </div>
+      <div class="base-config-body">
+        <div class="form-row three">
+          <label class="field">
+            <span>API Base</span>
+            <input id="apiBase" type="text" value="http://127.0.0.1:8000/v1">
+          </label>
+          <label class="field">
+            <span>模型名</span>
+            <input id="model" type="text" value="Qwen3.5-9B">
+          </label>
+          <label class="field">
+            <span>vLLM API Key 环境变量（可选）</span>
+            <input id="apiKeyEnv" type="text" value="" placeholder="留空不鉴权，如 VLLM_API_KEY">
+          </label>
+        </div>
+        <div class="form-row two">
+          <label class="field">
+            <span>Guard API Base</span>
+            <input id="guardApiBase" type="text" value="http://127.0.0.1:8000/v1">
+          </label>
+          <label class="field">
+            <span>Guard 模型名</span>
+            <input id="guardModel" type="text" value="Qwen3Guard-Gen-4B">
+          </label>
+        </div>
+        <div class="form-row four">
+          <label class="field">
+            <span>最大 tokens</span>
+            <input id="maxTokens" type="number" min="128" value="768">
+          </label>
+          <label class="field">
+            <span>温度</span>
+            <input id="temperature" type="number" min="0" max="2" step="0.1" value="0.2">
+          </label>
+          <label class="field">
+            <span>超时秒</span>
+            <input id="timeout" type="number" min="30" value="180">
+          </label>
+          <label class="field">
+            <span>丢弃重试上限</span>
+            <input id="discardRetryLimit" type="number" min="1" value="12">
+          </label>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="./app.js?v=example-gallery-20260818"></script>
+  </body>
+</html>

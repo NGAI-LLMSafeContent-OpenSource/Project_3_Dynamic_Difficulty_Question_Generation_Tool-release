@@ -1,0 +1,21 @@
+{
+  "harmful_pool": [
+    {
+      "id": "synthetic-marker",
+      "text": "接口测试用中性标记 release-risk-marker，不包含真实有害指令。",
+      "safety_label": "unsafe",
+      "language": "zh",
+      "category": "synthetic",
+      "source_trace": "self_authored_release_fixture_not_real_risk_data"
+    }
+  ],
+  "harmless_pool": [
+    {
+      "id": "fiction-1",
+      "text": "纯虚构聚会中，先询问参与者的意愿。",
+      "safety_label": "safe",
+      "language": "zh",
+      "source_trace": "self_authored_release_example"
+    }
+  ]
+}

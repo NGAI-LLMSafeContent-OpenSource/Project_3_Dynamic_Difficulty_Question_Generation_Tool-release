@@ -1,0 +1,9 @@
+[project]
+name = "dynamic-difficulty-question-generation-agent"
+version = "0.1.0"
+description = "Agent framework and local API for dynamic difficulty question generation."
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.uv]
+package = false

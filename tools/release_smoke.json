@@ -1,0 +1,58 @@
+{
+  "scope": "CPU scheduler/resume tests with fake model inputs and live local UI/HTTP; no real LLM generation",
+  "commands": [
+    {
+      "argv": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_continuous_generation.py",
+        "-v"
+      ]
+    }
+  ],
+  "servers": [
+    {
+      "argv": [
+        "{python}",
+        "ui/server.py",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "{port}"
+      ],
+      "ready": "/api/health",
+      "checks": [
+        {
+          "path": "/",
+          "text_contains": "<html"
+        },
+        {
+          "path": "/api/health",
+          "json_contains": {
+            "ok": true
+          }
+        },
+        {
+          "path": "/api/generation/options"
+        },
+        {
+          "path": "/api/example-samples",
+          "json_contains": {
+            "count": 3
+          }
+        },
+        {
+          "path": "/api/generation/jobs",
+          "json_contains": {
+            "jobs": []
+          }
+        }
+      ]
+    }
+  ]
+}
