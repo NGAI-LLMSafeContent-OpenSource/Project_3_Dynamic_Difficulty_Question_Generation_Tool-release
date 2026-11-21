@@ -1,0 +1,208 @@
+{
+  "policy": "Unmodified Git blob bytes for existing non-README runtime files; original defects retained. Release-only docs/configuration/examples are listed separately.",
+  "project": "NGAI-LLMSafeContent/Project_3_Dynamic_Difficulty_Question_Generation_Tool",
+  "schema": 1,
+  "source_commit": "dab4567f79a60434aa08445f24bb550347afba4d",
+  "source_files": {
+    ".gitignore": {
+      "git_blob": "23d681a8d67928f4db04dede27478f5eac0644c3",
+      "mode": "100644"
+    },
+    "agent_framework/pyproject.toml": {
+      "git_blob": "52f29d53baf41112d4e5a7fa8869c2d37de981b9",
+      "mode": "100644"
+    },
+    "agent_framework/scripts/compare_generation_models.py": {
+      "git_blob": "86b273f3d10ae52f0e3b3d6690e843af77d5c3fb",
+      "mode": "100644"
+    },
+    "agent_framework/scripts/generate_benchmark_data.py": {
+      "git_blob": "2bfa979f54f88c811010e1ff5abe04b73f063b3b",
+      "mode": "100644"
+    },
+    "agent_framework/scripts/run_resumable_generation.py": {
+      "git_blob": "8d06b88df18f5898eeb7b600dfa53b24296e5a08",
+      "mode": "100644"
+    },
+    "agent_framework/scripts/score_benchmark_results.py": {
+      "git_blob": "2888171c87c8bab471ce4fc7312ccc742d32296b",
+      "mode": "100644"
+    },
+    "agent_framework/uv.lock": {
+      "git_blob": "8f7ccd904758f3248fdc1e63d380d1a79ede10af",
+      "mode": "100644"
+    },
+    "configs/h1h4_generation.json": {
+      "git_blob": "c62c2e68112b3f9cd45c9233d686e20e9118fc40",
+      "mode": "100644"
+    },
+    "skills/README.md": {
+      "git_blob": "9aa50653d690b1a8b78ac45a9c89d8676a0a9986",
+      "mode": "100644"
+    },
+    "skills/__init__.py": {
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "100644"
+    },
+    "skills/common/__init__.py": {
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "100644"
+    },
+    "skills/common/io_utils.py": {
+      "git_blob": "c01ee3bbaa9aeb6f233a09cdf6ba26d38488d62d",
+      "mode": "100644"
+    },
+    "skills/common/models.py": {
+      "git_blob": "638ceb5aa5d0d866f95864e093ebe5662620f2ed",
+      "mode": "100644"
+    },
+    "skills/common/utils.py": {
+      "git_blob": "22ce80c616bb1d31452cd7ceb3df78d65b8a9d71",
+      "mode": "100644"
+    },
+    "skills/difficulty_assignment_skill/README.md": {
+      "git_blob": "8803adae74d71411e48532fbc52f71cbfb6653ca",
+      "mode": "100644"
+    },
+    "skills/difficulty_assignment_skill/__init__.py": {
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "100644"
+    },
+    "skills/difficulty_assignment_skill/difficulty.py": {
+      "git_blob": "a977bf1b4d125e53484385cecb336f344865fcf9",
+      "mode": "100644"
+    },
+    "skills/harmful_sample_collection_skill/README.md": {
+      "git_blob": "1bfdaf64bb4e9ea456c0a6d0d141261fb2f1bc6d",
+      "mode": "100644"
+    },
+    "skills/harmful_sample_collection_skill/__init__.py": {
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "100644"
+    },
+    "skills/harmful_sample_collection_skill/buffer_pool.py": {
+      "git_blob": "6760cd624d372173fad9ed3c87e20873896a7329",
+      "mode": "100644"
+    },
+    "skills/harmful_sample_collection_skill/extractors.py": {
+      "git_blob": "a5b1a28afa4c287b67cde5608aeae4279227d9d4",
+      "mode": "100644"
+    },
+    "skills/harmful_sample_collection_skill/matcher.py": {
+      "git_blob": "59aa68c3cd28266454cac02a29b0f0b4327ab523",
+      "mode": "100644"
+    },
+    "skills/harmless_content_generation_skill/README.md": {
+      "git_blob": "39bbca2b75a723e5d3070d7924dc691e6ef54435",
+      "mode": "100644"
+    },
+    "skills/harmless_content_generation_skill/__init__.py": {
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "100644"
+    },
+    "skills/harmless_content_generation_skill/companion_generator.py": {
+      "git_blob": "fa2e129079e59d03fdbea25654bfe28513fd243c",
+      "mode": "100644"
+    },
+    "skills/model_guided_output_splicing_skill/README.md": {
+      "git_blob": "8641d278279922ba3dc8984385905082e78cf516",
+      "mode": "100644"
+    },
+    "skills/model_guided_output_splicing_skill/__init__.py": {
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "100644"
+    },
+    "skills/model_guided_output_splicing_skill/assembler.py": {
+      "git_blob": "1e125865ac5c76297edb91a462c4a66496b0d398",
+      "mode": "100644"
+    },
+    "skills/model_guided_output_splicing_skill/composer.py": {
+      "git_blob": "cc649c8b32f496e438659382b47a604980ac1c17",
+      "mode": "100644"
+    },
+    "skills/pipeline.py": {
+      "git_blob": "a16e769994ab0e7ad232616d001ca2d391aef77c",
+      "mode": "100644"
+    },
+    "skills/quality_validation_skill/README.md": {
+      "git_blob": "5038a4e8a93d329092f020b16d42a4dc4eba60d4",
+      "mode": "100644"
+    },
+    "skills/quality_validation_skill/__init__.py": {
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "100644"
+    },
+    "skills/quality_validation_skill/final_guard.py": {
+      "git_blob": "5a6b52f110ba882478fe77d443e9b0ce3419ec79",
+      "mode": "100644"
+    },
+    "skills/quality_validation_skill/quality_gate.py": {
+      "git_blob": "2801ba610927a0d08d979d6c49092d37558e8b11",
+      "mode": "100644"
+    },
+    "skills/risk_classification_skill/README.md": {
+      "git_blob": "604ea8a9cc9e2c4cdb5eac326349c1a364569c1a",
+      "mode": "100644"
+    },
+    "skills/risk_classification_skill/__init__.py": {
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "100644"
+    },
+    "skills/risk_classification_skill/label_engine.py": {
+      "git_blob": "0372b4a1ddedf8db246bceb0b78e0174c2863ce6",
+      "mode": "100644"
+    },
+    "skills/span_formatting_recording_skill/README.md": {
+      "git_blob": "0742a3d75a9f2f451fd76056c2919870bbe6d25e",
+      "mode": "100644"
+    },
+    "skills/span_formatting_recording_skill/__init__.py": {
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "100644"
+    },
+    "skills/span_formatting_recording_skill/span_recorder.py": {
+      "git_blob": "d78134e588ea79918519bc200f82ccfeeb527e54",
+      "mode": "100644"
+    },
+    "tests/test_continuous_generation.py": {
+      "git_blob": "246f9b08a2703aac8bd9d748c53594cc0cb7fc98",
+      "mode": "100644"
+    },
+    "tests/test_example_samples.py": {
+      "git_blob": "d071ed4a43e59c1dba438bd938ad54ad0cbf11ef",
+      "mode": "100644"
+    },
+    "ui/app.js": {
+      "git_blob": "c5150d98d0f710b15ef284a5ab28cc1ba73b09b1",
+      "mode": "100644"
+    },
+    "ui/backend.py": {
+      "git_blob": "d36d293fd17d8d028be22526530e531432e49e7e",
+      "mode": "100644"
+    },
+    "ui/index.html": {
+      "git_blob": "e645ec356b6c5f126b92349492d4c35e9e89bacc",
+      "mode": "100644"
+    },
+    "ui/server.py": {
+      "git_blob": "7da0e6af8847e641026e3d6620a4fe2ad5ab60e5",
+      "mode": "100644"
+    },
+    "ui/styles.css": {
+      "git_blob": "fb7ade981cbe9e138990f83260328149a7ec41e7",
+      "mode": "100644"
+    },
+    "vllm_router/.env.example": {
+      "git_blob": "be5a17be5ee4bfede05320ecc0087eb14bfec743",
+      "mode": "100644"
+    },
+    "vllm_router/main.py": {
+      "git_blob": "9af578be5bb647d2330663ffc12467c3e12e5b32",
+      "mode": "100644"
+    },
+    "vllm_router/pyproject.toml": {
+      "git_blob": "d53229af5b58ebbea61a01165ecda4068c3aa66c",
+      "mode": "100644"
+    }
+  }
+}

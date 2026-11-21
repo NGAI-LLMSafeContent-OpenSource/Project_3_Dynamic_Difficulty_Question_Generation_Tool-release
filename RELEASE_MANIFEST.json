@@ -2,8 +2,9 @@
   "checks": {
     "commands": [
       [
-        "python3",
-        "tools/release_smoke.py"
+        "/data/fzk/env/published-runtime-audit/Project_3_Dynamic_Difficulty_Question_Generation_Tool/bin/python",
+        "-B",
+        "tools/release_check.py"
       ]
     ],
     "passed": true
@@ -13,17 +14,29 @@
       "mode": "100644",
       "sha256": "df133d1b1f152653a5200a3c674b36c08fe9f010c4698573525f434456c66585"
     },
+    "KNOWN_ISSUES.md": {
+      "mode": "100644",
+      "sha256": "b3c1fdd2f453059c1a0d3b5c5e7a523aef32a7bea86880666df141927b897a58"
+    },
     "LICENSE": {
       "mode": "100644",
       "sha256": "bf09923210a8186467c43b56946a7726e95850c172077106038be441a40c5776"
     },
     "README.md": {
       "mode": "100644",
-      "sha256": "4b4bef9ef2a95b3bdbdafe549a1bd50cd6686aa17cc44ffe299268e41f7ccfc7"
+      "sha256": "afcf5e4865d577d8f5cf407b221f116972fd733b41bf51848bd2c6a0fddaf2fa"
+    },
+    "RELEASE_FILES.md": {
+      "mode": "100644",
+      "sha256": "d6a692b4dabbdd1e150030f67ff923b2d1019f89a4f097893be5b5099fa98c69"
+    },
+    "SOURCE_ALIGNMENT.json": {
+      "mode": "100644",
+      "sha256": "736a53265a024e617700947e6cd988afdb694c572e9520efaba05a6cb46cd261"
     },
     "THIRD_PARTY_NOTICES.md": {
       "mode": "100644",
-      "sha256": "64d630c21b0dc13c84d3335a7d27a4d7c75cfe9333a9067eeef1368b3f8b40c0"
+      "sha256": "80704a4573ad056dfff5f85605193e1695913a170a76e41e123718ca99210c76"
     },
     "agent_framework/pyproject.toml": {
       "mode": "100644",
@@ -55,19 +68,19 @@
     },
     "examples/generation.example.json": {
       "mode": "100644",
-      "sha256": "6ad29b5263200a6cc759519bf9683342807f8fa2083f335488431ddb11d3e2a2"
+      "sha256": "104dc8cbba4dba1faa2a8188ea1166c1a0295964e1f77c253ffee9f8bdfcb13c"
     },
     "examples/seed.example.json": {
       "mode": "100644",
       "sha256": "f97b0107e552ad6a4360228ac2599e2b4eec6b003f4280c50061e0fe99601294"
     },
+    "release_checks.json": {
+      "mode": "100644",
+      "sha256": "77798e209ee1ae41449c4ab63a4ee0f07ae5847045db65ccdb45f5a763b00e78"
+    },
     "requirements.txt": {
       "mode": "100644",
       "sha256": "c00ffc27d13d5c144ca1cdd465ce5b89e2959a1e8e65278a96bd8690363fa32b"
-    },
-    "samples/samples.jsonl": {
-      "mode": "100644",
-      "sha256": "e5f64d8fdeefdf12473f9a3f2cced08f80b77a3eceb8fa843115ce9d11e1f570"
     },
     "skills/README.md": {
       "mode": "100644",
@@ -201,13 +214,13 @@
       "mode": "100644",
       "sha256": "d06e781ea364f4aa3055a4489998de38756c4af0a7d9064923c4fca5f10e757d"
     },
-    "tools/release_smoke.json": {
+    "tests/test_example_samples.py": {
       "mode": "100644",
-      "sha256": "42763f6f130f836753dd9c2d1f7752480e8f1a077631576507a27fbc03b82308"
+      "sha256": "83858053bce692ba08cd15e08820fc02a566726342a2e94867f50ddfdcbefd7a"
     },
-    "tools/release_smoke.py": {
+    "tools/release_check.py": {
       "mode": "100644",
-      "sha256": "c1c4720929fc490cff07f956eeff223037f0f0e2ad58a7d6b9d968efbb5c7126"
+      "sha256": "6b370aab6b096a1df48e44995198d6d46c0e54ac5f7cf371a327b8670264f5f0"
     },
     "ui/app.js": {
       "mode": "100644",
@@ -228,10 +241,22 @@
     "ui/styles.css": {
       "mode": "100644",
       "sha256": "5e8fc7ec93900772868005e12058c39bd74cc502e1cb04bba77acb47211ebb33"
+    },
+    "vllm_router/.env.example": {
+      "mode": "100644",
+      "sha256": "9d7b38a25dcc0a4d2a9ec3da12c46cf90b4cfa4b6345032d949286fab808068c"
+    },
+    "vllm_router/main.py": {
+      "mode": "100644",
+      "sha256": "666e43cba51a12798f8b3e664661aa4248050415a22d63a186cc7bf475108360"
+    },
+    "vllm_router/pyproject.toml": {
+      "mode": "100644",
+      "sha256": "6f5458681a92010f1424e92095efcc184b204fb5a639995316b7acf0ad1027cc"
     }
   },
   "project": "NGAI-LLMSafeContent/Project_3_Dynamic_Difficulty_Question_Generation_Tool",
   "schema": 1,
   "source_commit": "dab4567f79a60434aa08445f24bb550347afba4d",
-  "whitelist_sha256": "2ef9bcbd017b5b56c4d6831a0a9de43967e83cd9d185d1da363d6a27b0e5115f"
+  "whitelist_sha256": "349c2ce29839e4dab9606138a210443015d4bef91cb31a1b9453213f907d2a51"
 }

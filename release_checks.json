@@ -1,0 +1,45 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_continuous_generation.py"
+      ],
+      "cwd": ".",
+      "name": "continuous-generation-tests"
+    }
+  ],
+  "scope": "Pinned source byte/mode integrity, declared CPU/HTTP/frontend checks. Full model/GPU/data-dependent functionality is not implied. Upstream failures are preserved and separately documented.",
+  "servers": [
+    {
+      "argv": [
+        "{python}",
+        "ui/server.py",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "{port}"
+      ],
+      "checks": [
+        {
+          "path": "/"
+        },
+        {
+          "path": "/api/health"
+        },
+        {
+          "path": "/api/generation/options"
+        }
+      ],
+      "cwd": ".",
+      "name": "generation-ui",
+      "ready": "/api/health"
+    }
+  ]
+}
